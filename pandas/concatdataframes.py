@@ -52,11 +52,11 @@ us_weather = pd.DataFrame({
 # If the row sequence changes than in anyone column might be temp or windspeed then?
 
 # Now if u want to mold ur values according to sequence then?
-# Give the index number.
-temperature_df = pd.DataFrame({
-    "city" : ["mumbai","delhi","banglore"],
-    "temperature" : [32,45,30]
-},index=[0,1,2])
+# # Give the index number.
+# temperature_df = pd.DataFrame({
+#     "city" : ["mumbai","delhi","banglore"],
+#     "temperature" : [32,45,30]
+# },index=[0,1,2])
 # # print(temperature_df)
 
 # # 
@@ -69,7 +69,7 @@ temperature_df = pd.DataFrame({
 # print(df)
 # print(temperature_df)
 
-s = pd.Series(["Humid","Dry","Rain"],name="event")
-# print(s)
-df = pd.concat([temperature_df,s],axis=1)
-print(df)
+# s = pd.Series(["Humid","Dry","Rain"],name="event")
+# # print(s)
+# df = pd.concat([temperature_df,s],axis=1)
+# print(df)
