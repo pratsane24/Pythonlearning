@@ -38,6 +38,28 @@ import numpy as np
 # for cell in a.flat:
 #     print(cell)
 
+a=np.arange(12).reshape(3,4)
+print(a)
+# C order
+# for x in np.nditer(a,order='C'):
+#                    print(x)
+# Fortran order
+# for x in np.nditer(a,order='F'):
+#                    print(x)
+# for x in np.nditer(a,order='F',flags=['external_loop']):
+#                    print(x)
+
+for x in np.nditer(a,op_flags=['readwrite']):
+        x[...]=x*x
+# print(a)
+
+# b= np.array(3,15,4).reshape(3,1)
+b = np.array([3, 15, 4]).reshape(3, 1)
+# print(b)
+
+for x,y in np.nditer([a,b]):
+        print(x,y)                 
+
 #  3.Stacking together two arrays
 
 # a= np.arange(6).reshape(3,2)
@@ -58,14 +80,14 @@ import numpy as np
 # print(result[0])
 # print(result[1])
 
-a=np.arange(12).reshape(3,4)
+# a=np.arange(12).reshape(3,4)
 # print(a)
-b= a>4
+# b= a>4
 # print(b)
 
 # When u look from a towards b then they print value 
 # print(a[b])
 
 # IF u want to replace any no. with any other no. or value
-a[b]=-1
-print(a)
+# a[b]=-1
+# print(a)
