@@ -97,3 +97,22 @@ print(plt.ylabel("Prices(US$)", fontsize = 20))
 print(plt.scatter(df.Area,df.Prices, color="red",marker="*"))
 print(plt.plot(df.Area,reg.predict(df[['Area']]),color = "blue"))
 print(plt.show())
+
+
+# THis is from lec no 5. Save Model Using Joblib and pickle
+# Ask question to this below module and u will get the soln.
+
+# import pickle
+# with open ('model_pickle','wb') as f:
+#     pickle.dump(model,f)
+# with open ('model_pickle','rb') as f:
+#      mp  = pickle.load(f)
+
+# # for JOBLIB
+# from sklearn.externals import joblib
+# joblib.dump(model,'machinelearning/model_joblib')
+# # OUTPUT :- ['model_joblib']
+# mj = joblib.load('machinelearning/model_joblib')
+# print(mj.predict(5000))
+
+#  NOTE:- Lots of Error in this lec.
