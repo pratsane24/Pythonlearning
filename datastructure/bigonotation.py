@@ -37,3 +37,8 @@ for i in range(len(numbers)):
     if numbers[i] == 68:
         print(i)
 # Another method is binary element
+# [4,9,15,21,34,57,68,91] Search for 68 from this?
+# [4,9,15,(21),34,57,68,91] :- Iteration 1 = n/2
+# Iternation 2 :- (n/2)/2 = n/2^2 :- [34,(57),68,91]
+# Iternation 3 :- (n/2^2)/2 = n/2^3
+# Refer Notes for clear explaination.
