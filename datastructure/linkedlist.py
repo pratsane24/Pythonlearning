@@ -46,6 +46,6 @@ if __name__ == '__main__':
     # ll.insert_at_end(79)
     # ll.insert_at_end(1)
     # ll.insert_at_end(957)
-    ll.insert_values(["Banana","Mango","Apple","Orange","Grapes"])
-    ll.print()
+    # ll.insert_values(["Banana","Mango","Apple","Orange","Grapes"])
+    # ll.print()
 
