@@ -93,10 +93,100 @@
 
 # NOTE:- HERE WE CAN DO THIS BY USING METHOD USED FOR DICTONARY FUNCTION LIKE ARRAY, THIS WILL REDUCE THE WORK OF DEFINING THE ADD & GET FUNCTION ,ETC.
 # E.G
+# class hashtable:
+#     def __init__(self):
+#         self.MAX = 10
+#         self.arr = [None for i in range(self.MAX)]
+
+#     def get_hash(self,key):
+#         h = 0
+#         for char in key:
+#             h += ord(char)
+#         return h % self.MAX
+
+#     def __setitem__(self,key,val):
+#         h = self.get_hash(key)
+#         self.arr[h] = val
+
+#     def __getitem__(self,key):
+#         h = self.get_hash(key)
+#         return self.arr[h]
+
+#     def __delitem__(self,key):
+#        h = self.get_hash(key)
+#        self.arr[h] = None 
+
+# t = hashtable()
+# t['march 6'] = 130
+# t['march 1'] = 20
+# t['dec 10'] = 30
+# # print(t.arr) 
+# # print(t['march 17'])
+# # print(t['march 1'])
+# # del t['march 6']
+# print(t.arr)
+
+
+# It does not handle collision since if the index repeats it over-right the value of 1st element.
+# t = hashtable()
+# t['march 6'] = 130
+# t['march 1'] = 20
+# t['dec 10'] = 30
+# t['march 17'] = 204
+# print(t.arr) 
+# print(t['march 6'])
+
+# How to Implemement collision
+# There are 2 two to handle collision
+# In this if there are more than 1 element showing same index then where to save other elements so there are this methods.
+# 1. Chaining :- In this you have to save all the element in same index by creating a list which is known as chaining.
+# 2. Linear Pobing :- In this method if the index is full then the other element with same index no will go to next index and if the other 
+# index is also full or pre-occupied then it will move to next index.
+# for Digramatic representation is refer notes
+# E.G TO REMOVE COLLISION OR OVER-LAPPING ERROR
+# class hashtable:
+#     def __init__(self):
+#         self.MAX = 10
+#         self.arr = [[] for i in range(self.MAX)]
+
+#     def get_hash(self,key):
+#         h = 0
+#         for char in key:
+#             h += ord(char)
+#         return h % self.MAX
+
+#     def __getitem__(self,key):
+#         h = self.get_hash(key)
+#         return self.arr[h]
+
+# # QUESTION :- IF U WANT TO UPDATE ANY VALUE AT SAME DATE THEN FOLLOW THIS SYNTAX
+#     def __setitem__(self,key,val):
+#         h = self.get_hash(key)
+#         found = False
+#         for idx, element in enumerate(self.arr[h]):
+#             if len(element)==2 and element[0]==key:
+#                 self.arr[h][idx] = (key,val)
+#                 found = True
+#                 break
+#         if not found:
+#             self.arr[h].append((key,val))
+
+# t = hashtable()
+# t['march 6'] = 130
+# t['march 6'] = 78
+# t['march 8'] = 30
+# t['march 9'] = 30
+# t['march 17'] = 204
+# print(t.arr) 
+# print(t['march 6'])
+# NOTE:- HERE IN THIS OUTOUT U GET THE VALUE OF MARCH 6 AS 78 AND NOT 130, SINCE THE VALUE GETS OVERLAPP OR UPDATED.
+
+
+# this is the eg for running the list in the same index and getting the value for the desired elelment.
 class hashtable:
     def __init__(self):
-        self.MAX = 100
-        self.arr = [None for i in range(self.MAX)]
+        self.MAX = 10
+        self.arr = [[] for i in range(self.MAX)]
 
     def get_hash(self,key):
         h = 0
@@ -104,28 +194,39 @@ class hashtable:
             h += ord(char)
         return h % self.MAX
 
-    def __setitem__(self,key,val):
-        h = self.get_hash(key)
-        self.arr[h] = val
-
     def __getitem__(self,key):
         h = self.get_hash(key)
-        return self.arr[h]
+        for element in self.arr[h]:
+            if element[0] == key:
+                return element[1]
 
+    def __setitem__(self,key,val):
+        h = self.get_hash(key)
+        found = False
+        for idx, element in enumerate(self.arr[h]):
+            if len(element)==2 and element[0]==key:
+                self.arr[h][idx] = (key,val)
+                found = True
+                break
+        if not found:
+            self.arr[h].append((key,val))
+
+# To delete something
     def __delitem__(self,key):
-       h = self.get_hash(key)
-       self.arr[h] = None 
-
+        h = self.get_hash(key)
+        for index, element in enumerate(self.arr[h]):
+            if element[0] == key:
+                del self.arr[h][index]
 t = hashtable()
 t['march 6'] = 130
-t['march 1'] = 20
-t['dec 10'] = 30
-print(t.arr) 
+t['march 6'] = 78
+t['march 8'] = 30
+t['march 9'] = 30
+t['march 17'] = 204
+print(t.arr)
 # print(t['march 17'])
-# print(t['march 1'])
+# print(t['march 6'])
+del t['march 17']
+print(t.arr)
 del t['march 6']
 print(t.arr)
-
-
-
-
