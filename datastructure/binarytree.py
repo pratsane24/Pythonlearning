@@ -61,8 +61,38 @@ class BinarySearchTreeNode :
                 return self.right.search(val)
             else:
                 return False
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        return self.right.find_max()
 
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min()
+    
+    def delete(self,val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.right
+            
+            min_val = self.right.find_min()
+            self.data = min_val  
+            self.right = self.right.delete(min_val)
 
+        return self         
+
+        
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
 
@@ -71,23 +101,35 @@ def build_tree(elements):
 
     return root
 
-# if __name__ == '__main__':
-#     numbers = [17,4,1,20,9,23,18,34,18,4]
-#     numbers_tree = build_tree(numbers)
-#     # print(numbers_tree.in_order_traversal())
-# # It removes duplicate.
-#     print(numbers_tree.search(20))
-    # print(numbers_tree.search(21))
-    # OUTPUT IS TRUE since no 20 exist in the above set.
-    # OUTPUT IS FALSE since no 21 exist in the above set.
-
 
 if __name__ == '__main__':
-    countries = ["India","Pakistan","Germany","USA","China","India","UK","USA","Norway"]
-    country_tree = build_tree(countries)
+    numbers = [17,4,1,20,9,23,18,34,18,4]
+    numbers_tree = build_tree(numbers)
+    print(numbers_tree.in_order_traversal())
+    numbers_tree.delete(20)
+    print("After Deleting 20 ", numbers_tree.in_order_traversal())
+    numbers_tree.delete(17)
+    print("After Deleting 17 ", numbers_tree.in_order_traversal())
 
-    print("UK is in the list? ", country_tree.search("UK"))
-    print("Sweden is in the list? ", country_tree.search("Sweden"))
+# # It removes duplicate.
+#     print(numbers_tree.search(20))
+#     print(numbers_tree.search(21))
+#     OUTPUT IS TRUE since no 20 exist in the above set.
+#     OUTPUT IS FALSE since no 21 exist in the above set.
 
-    print(country_tree.in_order_traversal())
+
+# if __name__ == '__main__':
+#     countries = ["India","Pakistan","Germany","USA","China","India","UK","USA","Norway"]
+#     country_tree = build_tree(countries)
+
+    # print("UK is in the list? ", country_tree.search("UK"))
+    # print("Sweden is in the list? ", country_tree.search("Sweden"))
+
+    # print(country_tree.in_order_traversal())
     # Countries will be sorted according to alphabetical order.
+
+# Deleting a node from binary tree
+# 1. Delete a node with no child, In this you can directly delete the node.
+# 2. DElete a node with 1 child , In this the child node comes up & take the place of delated node.
+# 3. Delete a node with 2 cildren, In this you have to rebalance your tree in a way that the basic properties of binary search tree holds true.
+
