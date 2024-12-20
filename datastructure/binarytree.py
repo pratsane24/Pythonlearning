@@ -133,3 +133,7 @@ if __name__ == '__main__':
 # 2. DElete a node with 1 child , In this the child node comes up & take the place of delated node.
 # 3. Delete a node with 2 cildren, In this you have to rebalance your tree in a way that the basic properties of binary search tree holds true.
 
+
+
+
+
