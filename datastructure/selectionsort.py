@@ -22,7 +22,18 @@ def selection_sort(arr):
 
 
 if __name__ == "__main__":
-    elements = [78,12,15,8,61,53,23,27]
-    selection_sort(elements)
-    # print(find_min_element(elements))
-    print(elements)
+    # elements = [78,12,15,8,61,53,23,27]
+    # selection_sort(elements)
+    # # print(find_min_element(elements))
+    # print(elements)
+
+    tests = [
+        [89,78,61,53,23,21,17,12,9,7,6,2,1],
+        [ ],
+        [1,5,8,9],
+        [235,3,1,56,32,12,9,34,1300],
+        [5]
+    ]
+    for elements in tests:
+        selection_sort(elements)
+        print(elements)
