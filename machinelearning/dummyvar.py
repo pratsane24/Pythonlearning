@@ -44,4 +44,10 @@ dfle.town = le.fit_transform(dfle.town)
 X = df[['town','area']].values
 # print(X)
 y = dfle.price
-print(y)
+# print(y)
+
+from sklearn.preprocessing import OneHotEncoder
+# import numpy as np
+# ohe = OneHotEncoder(categorical_features=[0])
+# X = ohe.fit_transform(X).toarray()
+# print(X) NOTE:- NOT GETTING OUTPUT FOR THIS.
